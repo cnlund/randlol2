@@ -23,17 +23,18 @@ body{
 }
 .cuadro{
     background-color: #C89B3C;
-    width: 100%;
 }
 .encabezado{
     margin: 3%;
     width: 100%;
     font-family: "Titulos Lol";
+    text-align: justify;
 }
 .ALL{
     margin-top:170%;
     margin-left: 50%;
     background-color: #0A1428;
+    padding: 2%;
 }
 .lateral{
     margin-left: 10%;
@@ -43,6 +44,7 @@ body{
     display: flex;
     flex-direction: column;
 }
+
 .TOP{
     background-color: #0A1428;
 }
@@ -65,6 +67,7 @@ body{
 button:hover, #submit:hover, button:active,#submit:active{
     cursor: url("./cursores/gam1340.cur"),auto;
     transition: 0.5s ease;
+    border-radius: 8px;
 }
 .Campeones{
     margin-top: 50px;
@@ -76,6 +79,8 @@ button:hover, #submit:hover, button:active,#submit:active{
 .TextoRec{
     font-family: "Titulos Lol";
     color : #C89B3C;
+    text-align: center;
+   
 }
 .champimg{
     display: none;

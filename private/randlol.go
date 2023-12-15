@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+	"github.com/p-ob/go-riot/lol"
+)
 
 func inicioHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/inicio.html")
@@ -11,6 +14,9 @@ func randlolHandler(c *fiber.Ctx) error {
 }
 
 func main() {
+	apiKey := "RGAPI-5312ef19-d176-4eec-9961-4140554b5d8c"
+	region := lol.Lan
+	client := lol.NewClient(apiKey, region, nil)
 	web := fiber.New()
 	web.Get("/", inicioHandler)
 	web.Static("/css", "/public/inicio.css")

@@ -37,21 +37,24 @@ h1{
     text-align: center;
     text-shadow: 5px 5px 5px black;
 }
+h2{
+    font-size: 3vh;
+    color: #F0E6D2;
+    /*AQUI DEBE PONERSE EL ESTILO DE FUENTE QUE SE DEBE DESCARGAR*/
+    font-weight:lighter;
+    text-align: justify;
+}
 
 .img{
     border: dashed #C89B3C;
+    border-radius: 8px;
     padding: 2vh;
 }
-.cajaBoton{
-    border: solid white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .boton{
-    border: solid;
     display: flex;
-    padding-top: 12%;
+    padding-top: 2vh;
+    margin-bottom: -2vh;
     justify-content: center;
 }
 
@@ -62,19 +65,32 @@ h1{
     color: #F0E6D2;
     display: flex;
     font-size: 18px;
-    padding: 4px;
+    padding: 8px 8px;
     cursor: pointer;
     transition: .3s;
+    font-weight: bolder;
 }
 span{
     background-color: #785A28;
+    padding: 20px 50px;
+    border-radius: 6px;
+    transition: .3s;
+}
+button:hover span{
+    background: none;
 }
 
 .nota_de_pie {
     align-items: end;
+    background-color: #C89B3C;
+    border: solid #C89B3C;
 }
 
 .creditos {
-    color: #C89B3C;
+    color: #0A1428;
     font-weight: lighter;
+    background: transparent;
+    padding-left: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: solid #0A1428;
 }
