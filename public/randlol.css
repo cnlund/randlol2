@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "Titulos Lol";
+    src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Bold.otf");
+}
+@font-face{
+    font-family: "Botones";
+    src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Italic(1).otf");
+}
+body{
+    display: flex;
+    justify-content: baseline;
+    background-color: #0A1428;
+    flex-direction: row;
+    cursor: url("./cursores/link.cur"),auto;
+}
+.superior{
+    display: flex;
+    flex-direction: column;
+}
+.logotipo{
+    height: 200px;
+    width: 400px;
+}
+.cuadro{
+    background-color: #C89B3C;
+    width: 100%;
+}
+.encabezado{
+    margin: 3%;
+    width: 100%;
+    font-family: "Titulos Lol";
+}
+.ALL{
+    margin-top:170%;
+    margin-left: 50%;
+    background-color: #0A1428;
+}
+.lateral{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.lineas{
+    display: flex;
+    flex-direction: column;
+}
+.TOP{
+    background-color: #0A1428;
+}
+.JG{
+    background-color: #0A1428;
+    margin-top:20%;
+}
+.MID{
+    background-color: #0A1428;
+    margin-top: 20%;
+}
+.BOT{
+    background-color: #0A1428;
+    margin-top:20%;
+}
+.SUPPORT{
+    background-color: #0A1428;
+    margin-top:20%;
+}
+button:hover, #submit:hover, button:active,#submit:active{
+    cursor: url("./cursores/gam1340.cur"),auto;
+    transition: 0.5s ease;
+}
+.Campeones{
+    margin-top: 50px;
+    margin-left: 50px; 
+    padding: 190px;
+    border: 10px solid #785A28;
+    background-color: #5B5A56;
+}
+.TextoRec{
+    font-family: "Titulos Lol";
+    color : #C89B3C;
+}
+.champimg{
+    display: none;
+    height: 500px;
+    width: 500px;
+}

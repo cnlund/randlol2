@@ -1,0 +1,80 @@
+* {
+    background-color: #0A1428;
+}
+
+.titulo {
+    color: #C89B3C;
+    font-weight: bold;
+    font-size: 8vh;
+}
+
+.bienvenida {
+
+    font-weight: lighter;
+    border-bottom: solid #C89B3C;
+    border-width: 0.2vh;
+    color: #C89B3C;
+    padding-bottom: 1vh;
+}
+.APIs{
+    display: flex;
+}
+.API {
+    padding: 2vh;
+    font-size: 5vh;
+    margin: 2vh;
+    border: solid #463714;
+    border-radius: 8px ;
+    width: 100%;
+    box-shadow: 0px 0px 7px #C89B3C;
+}
+
+h1{
+    color: #F0E6D2;
+    z-index: 2;
+    background-color: transparent;
+    /* AQUI DEBEMOS COLOCAR EL ESTILO DE FUENTE QUE QUEREMOS*/
+    text-align: center;
+    text-shadow: 5px 5px 5px black;
+}
+
+.img{
+    border: dashed #C89B3C;
+    padding: 2vh;
+}
+.cajaBoton{
+    border: solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.boton{
+    border: solid;
+    display: flex;
+    padding-top: 12%;
+    justify-content: center;
+}
+
+.botonStyle{
+    border: 0;
+    background-color: #C89B3C;
+    border-radius: 8px;
+    color: #F0E6D2;
+    display: flex;
+    font-size: 18px;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+span{
+    background-color: #785A28;
+}
+
+.nota_de_pie {
+    align-items: end;
+}
+
+.creditos {
+    color: #C89B3C;
+    font-weight: lighter;
+}
