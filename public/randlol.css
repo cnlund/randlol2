@@ -14,6 +14,7 @@ body {
 .regresar {
     border: white;
 }
+
 .logotipo {
     height: 200px;
     width: 400px;
@@ -30,22 +31,24 @@ body {
     text-align: justify;
 }
 
-.botonAtras{
+.botonAtras {
     padding: 3vh;
 }
-.ATRAS{
+
+.ATRAS {
     border-radius: 8px;
     padding: 2vh;
     background-color: #C89B3C;
-    box-shadow:5px 5px 10px #0AC8B9;
+    box-shadow: 5px 5px 10px #0AC8B9;
 }
 
-.todas{
+.todas {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2vh;
 }
+
 .ALL {
     background-color: #0A1428;
     padding: 2%;
@@ -68,7 +71,7 @@ body {
     border: solid #C89B3C;
 }
 
-.Asesino:hover{
+.Asesino:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
 
@@ -76,37 +79,37 @@ body {
 
 .Peleador {
     background-color: #0A1428;
-    margin-top: 20%;
+    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
 }
 
-.Peleador:hover{
+.Peleador:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
 
 .Mago {
     background-color: #0A1428;
-    margin-top: 20%;
+    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
 }
 
-.Mago:hover{
+.Mago:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
 
 .Tirador {
     background-color: #0A1428;
-    margin-top: 20%;
+    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
 }
 
-.Tirador:hover{
+.Tirador:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
 
@@ -114,11 +117,11 @@ body {
     border-radius: 8px;
     padding: 2vh;
     background-color: #0A1428;
-    margin-top: 20%;
+    margin-top: 3%;
     border: solid #C89B3C;
 }
 
-.Soporte:hover{
+.Soporte:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
 
@@ -126,10 +129,29 @@ body {
     border-radius: 8px;
     padding: 2vh;
     background-color: #0A1428;
-    margin-top: 20%;
+    margin-top: 3%;
     border: solid #C89B3C;
 }
 
-.Tanque:hover{
+.Tanque:hover {
     box-shadow: 0 0 20px #0AC8B9;
+}
+
+.Campeones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 717px;
+    width: 1215px;
+    margin-left: 50px;
+    border: 10px solid #785A28;
+    background-color: #5B5A56;
+}
+
+.TextoRec {
+    font-family: "Titulos Lol";
+    color: #C89B3C;
+    color: #C89B3C;
+    text-align: center;
+
 }
