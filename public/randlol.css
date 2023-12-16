@@ -1,13 +1,3 @@
-@font-face {
-    font-family: "Titulos Lol";
-    src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Bold.otf");
-}
-
-@font-face {
-    font-family: "Botones";
-    src: url("./BeaufortForLoL-OTF/BeaufortforLOL-Italic(1).otf");
-}
-
 body {
     display: flex;
     justify-content: baseline;
@@ -71,32 +61,20 @@ body {
 }
 
 
-.TOP {
+.Asesino {
     background-color: #0A1428;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
 }
 
-.TOP:hover{
+.Asesino:hover{
     box-shadow: 0 0 20px #0AC8B9;
 }
 
 
 
-.JG {
-    background-color: #0A1428;
-    margin-top: 20%;
-    border-radius: 8px;
-    padding: 2vh;
-    border: solid #C89B3C;
-}
-
-.JG:hover{
-    box-shadow: 0 0 20px #0AC8B9;
-}
-
-.MID {
+.Peleador {
     background-color: #0A1428;
     margin-top: 20%;
     border-radius: 8px;
@@ -104,11 +82,11 @@ body {
     border: solid #C89B3C;
 }
 
-.MID:hover{
+.Peleador:hover{
     box-shadow: 0 0 20px #0AC8B9;
 }
 
-.BOT {
+.Mago {
     background-color: #0A1428;
     margin-top: 20%;
     border-radius: 8px;
@@ -116,11 +94,23 @@ body {
     border: solid #C89B3C;
 }
 
-.BOT:hover{
+.Mago:hover{
     box-shadow: 0 0 20px #0AC8B9;
 }
 
-.SUPPORT {
+.Tirador {
+    background-color: #0A1428;
+    margin-top: 20%;
+    border-radius: 8px;
+    padding: 2vh;
+    border: solid #C89B3C;
+}
+
+.Tirador:hover{
+    box-shadow: 0 0 20px #0AC8B9;
+}
+
+.Soporte {
     border-radius: 8px;
     padding: 2vh;
     background-color: #0A1428;
@@ -128,27 +118,18 @@ body {
     border: solid #C89B3C;
 }
 
-.SUPPORT:hover{
+.Soporte:hover{
     box-shadow: 0 0 20px #0AC8B9;
 }
 
-
-.Campeones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 717px;
-    width: 1215px;
-    margin-left: 50px;
-    border: 10px solid #785A28;
-    background-color: #5B5A56;
+.Tanque {
+    border-radius: 8px;
+    padding: 2vh;
+    background-color: #0A1428;
+    margin-top: 20%;
+    border: solid #C89B3C;
 }
 
-.TextoRec {
-    font-family: "Titulos Lol";
-    color: #C89B3C;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.Tanque:hover{
+    box-shadow: 0 0 20px #0AC8B9;
 }

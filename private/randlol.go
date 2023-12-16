@@ -1,12 +1,13 @@
 package main
 
 import (
-	"context"
-	"fmt"
-
-	"github.com/Kyagara/equinox"
+	"github.com/KnutZuidema/golio"
+	"github.com/KnutZuidema/golio/api"
 	"github.com/gofiber/fiber/v2"
+	"github.com/sirupsen/logrus"
 )
+
+var llave = "RGAPI-e6584dc2-20f1-43aa-af99-f9e8036a543e"
 
 func inicioHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/inicio.html")
@@ -16,14 +17,12 @@ func randlolHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/randlol.html")
 }
 
-func pruebaapiHandler(c *fiber.Ctx) error {
-	client, err := equinox.NewClient("RGAPI-5a4bccc9-8e19-4592-9d6a-989b18103e8d")
-	if err != nil {
-		fmt.Println("Error al crear el cliente de riot: ", err)
-	}
-	ctx := context.Background()
-	prueba, _ := client.DDragon.Champion.ByName(ctx, "13.24.1", "es_MX", "Aatrox")
-	return c.JSON(prueba)
+func listachampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listachamps, _ := client.DataDragon.GetChampions()
+	return c.JSON(listachamps)
 }
 
 func main() {
@@ -33,11 +32,12 @@ func main() {
 	web.Post("/randlol", randlolHandler)
 	web.Static("/randlol/css", "/public/randlol.css")
 	web.Static("/randlol/todas", "/public/imagenes-randlol/emblem-challenger.png")
-	web.Static("/randlol/top", "/public/imagenes-randlol/Position_Gold-Top.png")
-	web.Static("/randlol/jg", "/public/imagenes-randlol/Position_Gold-Jungle.png")
-	web.Static("/randlol/mid", "/public/imagenes-randlol/Position_Gold-Mid.png")
-	web.Static("/randlol/bot", "/public/imagenes-randlol/Position_Gold-Bot.png")
-	web.Static("/randlol/supp", "/public/imagenes-randlol/Position_Gold-Support.png")
-	web.Get("/pruebaapi", pruebaapiHandler)
+	web.Static("/randlol/asesino", "/public/imagenes-randlol/assassin.png")
+	web.Static("/randlol/peleador", "/public/imagenes-randlol/fighter.png")
+	web.Static("/randlol/mago", "/public/imagenes-randlol/mage.png")
+	web.Static("/randlol/tirador", "/public/imagenes-randlol/marksman.png")
+	web.Static("/randlol/soporte", "/public/imagenes-randlol/support.png")
+	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
+	web.Get("/listachamps", listachampsHandler)
 	web.Listen(":403")
 }
