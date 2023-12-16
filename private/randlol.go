@@ -17,6 +17,10 @@ func randlolHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/randlol.html")
 }
 
+func API2Handler(c *fiber.Ctx) error {
+	return c.SendFile("public/API2.html")
+}
+
 func listachampsHandler(c *fiber.Ctx) error {
 	client := golio.NewClient(llave,
 		golio.WithRegion(api.RegionLatinAmericaNorth),
@@ -29,6 +33,8 @@ func main() {
 	web := fiber.New()
 	web.Get("/", inicioHandler)
 	web.Static("/css", "/public/inicio.css")
+
+	//Aqui la seccion perteneciente al manejo de recusos de RANDLOL
 	web.Post("/randlol", randlolHandler)
 	web.Static("/randlol/css", "/public/randlol.css")
 	web.Static("/randlol/todas", "/public/imagenes-randlol/emblem-challenger.png")
@@ -39,5 +45,10 @@ func main() {
 	web.Static("/randlol/soporte", "/public/imagenes-randlol/support.png")
 	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
 	web.Get("/listachamps", listachampsHandler)
+
+	//Aqui la seccion perteneciente al manejo de recusos de API2
+	web.Post("/API2", API2Handler)
+	web.Static("/API2/css", "/public/API2.css")
+
 	web.Listen(":403")
 }

@@ -1,34 +1,10 @@
-body {
+.home{
     display: flex;
-    justify-content: baseline;
+}
+body {
+    margin: 0;
     background-color: #0A1428;
     flex-direction: row;
-    cursor: url("./cursores/link.cur"), auto;
-}
-
-.superior {
-    display: flex;
-    flex-direction: column;
-}
-
-.regresar {
-    border: white;
-}
-
-.logotipo {
-    height: 200px;
-    width: 400px;
-}
-
-.cuadro {
-    background-color: #C89B3C;
-}
-
-.encabezado {
-    margin: 3%;
-    width: 100%;
-    font-family: "Titulos Lol";
-    text-align: justify;
 }
 
 .botonAtras {
@@ -56,13 +32,13 @@ body {
 }
 
 .lateral {
+    border: solid #C89B3C;
+    padding: 2vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 2vh;
+    
 }
-
 
 .Asesino {
     background-color: #0A1428;
@@ -79,7 +55,6 @@ body {
 
 .Peleador {
     background-color: #0A1428;
-    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
@@ -91,7 +66,6 @@ body {
 
 .Mago {
     background-color: #0A1428;
-    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
@@ -103,7 +77,6 @@ body {
 
 .Tirador {
     background-color: #0A1428;
-    margin-top: 3%;
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
@@ -117,7 +90,6 @@ body {
     border-radius: 8px;
     padding: 2vh;
     background-color: #0A1428;
-    margin-top: 3%;
     border: solid #C89B3C;
 }
 
@@ -129,21 +101,27 @@ body {
     border-radius: 8px;
     padding: 2vh;
     background-color: #0A1428;
-    margin-top: 3%;
     border: solid #C89B3C;
 }
 
 .Tanque:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
+.contenedorChamps{
+    border: solid #0AC8B9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .Campeones {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 717px;
-    width: 1215px;
-    margin-left: 50px;
+    height: 500px;
+    width: 700px;
+    margin: 50px;
+
     border: 10px solid #785A28;
     background-color: #5B5A56;
 }
