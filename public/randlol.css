@@ -11,13 +11,71 @@ body {
     padding: 3vh;
 }
 
-.ATRAS {
-    border-radius: 8px;
-    padding: 2vh;
-    background-color: #C89B3C;
-    box-shadow: 5px 5px 10px #0AC8B9;
-}
-
+.regreso {
+    position: relative;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background: #0A1428;
+    color: #C8AA6E;
+    cursor: pointer;
+    transition: .5s;
+    overflow: hidden;
+ }
+ 
+ .regreso:hover{
+     color: #C89B3C;
+ }
+ 
+ .regreso  span {
+     position: absolute;
+     background: #C89B3C;
+     transition: .5s;
+ }
+ 
+ button span:nth-child(1){
+     width: 100%;
+     height: 1px;
+     top: 0;
+     left: -100%;
+ }
+ 
+ .regreso:hover span:nth-child(1){
+     left: 0;
+ }
+ 
+ button span:nth-child(2){
+     width: 100%;
+     height: 1px;
+     bottom: 0;
+     right: -100%;
+ }
+ 
+ .regreso:hover span:nth-child(2){
+     right: 0;
+ }
+ 
+ button span:nth-child(3){
+     width: 1px;
+     height: 100%;
+     top: -100%;
+     right: 0;
+ }
+ 
+ .regreso:hover span:nth-child(3){
+     top: 0;
+ }
+ 
+ button span:nth-child(4){
+     width: 1px;
+     height: 100%;
+     bottom: -100%;
+     left: 0;
+ }
+ 
+ .regreso:hover span:nth-child(4){
+     bottom: 0;
+ }
 .todas {
     display: flex;
     align-items: center;
@@ -108,7 +166,6 @@ body {
     box-shadow: 0 0 20px #0AC8B9;
 }
 .contenedorChamps{
-    border: solid #0AC8B9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +178,6 @@ body {
     height: 500px;
     width: 700px;
     margin: 50px;
-
     border: 10px solid #785A28;
     background-color: #5B5A56;
 }

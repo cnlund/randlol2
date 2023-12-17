@@ -16,20 +16,22 @@
     color: #C89B3C;
     padding-bottom: 1vh;
 }
-.APIs{
+
+.APIs {
     display: flex;
 }
+
 .API {
     padding: 2vh;
     font-size: 5vh;
     margin: 2vh;
     border: solid #463714;
-    border-radius: 8px ;
+    border-radius: 8px;
     width: 100%;
     box-shadow: 0px 0px 7px #C89B3C;
 }
 
-h1{
+h1 {
     color: #F0E6D2;
     z-index: 2;
     background-color: transparent;
@@ -37,28 +39,29 @@ h1{
     text-align: center;
     text-shadow: 5px 5px 5px black;
 }
-h2{
+
+h2 {
     font-size: 3vh;
     color: #F0E6D2;
     /*AQUI DEBE PONERSE EL ESTILO DE FUENTE QUE SE DEBE DESCARGAR*/
-    font-weight:lighter;
+    font-weight: lighter;
     text-align: justify;
 }
 
-.img{
+.img {
     border: dashed #C89B3C;
     border-radius: 8px;
     padding: 2vh;
 }
 
-.boton{
+.boton {
     display: flex;
     padding-top: 2vh;
     margin-bottom: -2vh;
     justify-content: center;
 }
 
-.botonStyle{
+.botonStyle {
     border: 0;
     background-color: #C89B3C;
     border-radius: 8px;
@@ -70,13 +73,15 @@ h2{
     transition: .3s;
     font-weight: bolder;
 }
-span{
+
+span {
     background-color: #785A28;
     padding: 20px 50px;
     border-radius: 6px;
     transition: .3s;
 }
-button:hover span{
+
+button:hover span {
     background: none;
 }
 
