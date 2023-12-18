@@ -34,6 +34,14 @@ func listachampsHandler(c *fiber.Ctx) error {
 	return c.JSON(listachamps)
 }
 
+func listaitemsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaitems, _ := client.DataDragon.GetItems()
+	return c.JSON(listaitems)
+}
+
 func main() {
 	web := fiber.New()
 	web.Get("/", inicioHandler)
@@ -53,8 +61,9 @@ func main() {
 	web.Get("/listachamps", listachampsHandler)
 	web.Static("/randlol/js", "/public/randlol.js")
 	//Aqui la seccion perteneciente al manejo de recusos de API2
-	web.Post("/API2", API2Handler)
-	web.Static("/API2/css", "/public/API2.css")
+	web.Post("/randitems", API2Handler)
+	web.Static("/randitems/css", "/public/API2.css")
+	web.Get("/randitems/listaitems", listaitemsHandler)
 
 	web.Listen(":403")
 }
