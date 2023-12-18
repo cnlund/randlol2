@@ -64,6 +64,12 @@
                 </h1>
             </div>
         </div>
-        <script src="/randlol/js"></script>
+        <script>
+            fetch("/randlol/champsfiltrados")
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+            })
+        </script>
  </body>
 </html>

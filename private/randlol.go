@@ -7,7 +7,12 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var llave = "RGAPI-e6584dc2-20f1-43aa-af99-f9e8036a543e"
+var llave = "RGAPI-19263f20-b1dd-495f-85fe-a9f133932a18"
+
+type Champ struct {
+	Nombre string   `json:".name"`
+	Tipos  []string `json:".tags"`
+}
 
 func inicioHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/inicio.html")
