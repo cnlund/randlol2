@@ -2,7 +2,13 @@
     background-color: #0A1428;
 }
 
+.Franja_superior {
+    display: flex;
+    justify-content: center;
+}
+
 .titulo {
+    display: flex;
     color: #C89B3C;
     font-weight: bold;
     font-size: 8vh;

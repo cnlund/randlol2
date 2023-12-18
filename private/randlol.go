@@ -38,6 +38,7 @@ func main() {
 	web := fiber.New()
 	web.Get("/", inicioHandler)
 	web.Static("/css", "/public/inicio.css")
+	web.Static("/logo", "public/imagenes-inicio/logo-lolpedia.png")
 
 	//Aqui la seccion perteneciente al manejo de recusos de RANDLOL
 	web.Post("/randlol", randlolHandler)
