@@ -50,7 +50,7 @@ func main() {
 	web.Static("/randlol/soporte", "/public/imagenes-randlol/support.png")
 	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
 	web.Get("/listachamps", listachampsHandler)
-
+	web.Static("/randlol/js", "/public/randlol.js")
 	//Aqui la seccion perteneciente al manejo de recusos de API2
 	web.Post("/API2", API2Handler)
 	web.Static("/API2/css", "/public/API2.css")
