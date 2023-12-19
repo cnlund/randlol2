@@ -1,9 +1,24 @@
 
 body {
     background-color: #091428;
+}  
+
+.titulo{
+    border: solid white;
+    display: flex;
+    justify-content: center;
+}
+.title{
+    border: solid white;
+    text-shadow: 5px 5px 5px black;
+    color: #C89B3C;
+    font-size: 8vh;
 }
 
+
+
 .botonAtras {
+    border: solid white;
     padding: 6vh;
     display: flex;
     justify-content: center;

@@ -103,7 +103,6 @@ button span:nth-child(4){
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    
 }
 
 .Asesino {
@@ -124,6 +123,7 @@ button span:nth-child(4){
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
+    margin-top: 2vh;
 
 }
 
@@ -136,7 +136,7 @@ button span:nth-child(4){
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
-  
+    margin-top: 2vh;
 }
 
 .Mago:hover {
@@ -148,6 +148,7 @@ button span:nth-child(4){
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
+    margin-top: 2vh;
 }
 
 .Tirador:hover {
@@ -159,6 +160,7 @@ button span:nth-child(4){
     padding: 2vh;
     background-color: #0A1428;
     border: solid #C89B3C;
+    margin-top: 2vh;
 }
 
 .Soporte:hover {
@@ -170,6 +172,7 @@ button span:nth-child(4){
     padding: 2vh;
     background-color: #0A1428;
     border: solid #C89B3C;
+    margin-top: 2vh;
 }
 
 .Tanque:hover {
@@ -200,15 +203,24 @@ button span:nth-child(4){
     background-color: #5B5A56;
 }
 .texto{
-    margin-right: 5vh;
+    margin-top: 2vh;
+    justify-content: center;
+    border: solid white;
 }
-
-.TextoRec {
-    font-family: "Titulos Lol";
-    color: #C89B3C;
+.Titulo{
     color: #C89B3C;
     text-align: center;
+    border: solid white;
 
+}
+
+.Textolore {
+    border: solid white;
+    font-family: "Titulos Lol";
+    color: #C89B3C;
+    text-align: justify;
+    border-radius: 8px;
+    border: dotted;
 }
 
 .champimg{

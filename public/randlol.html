@@ -42,10 +42,10 @@
                     <img id="champimg" width="100%">
                 </div>
                 <div class="texto">
-                    <h1 class="TextoRec" id="textchamp">
+                    <h1 class="Titulo" id="textchamp">
                         RandLOL
                     </h1>
-                    <h2 class="TextoRec" id="datoschamps">
+                    <h2 class="Textolore" id="datoschamps">
                     </h2>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         image.style.display = "flex";
                         texto.innerHTML = data.id
                         datos.innerHTML = data.tags + "</br>" + data.blurb 
-                        datos.style.backgroundColor = "azure"
+                        datos.style.backgroundColor = "#010A13"
                         datos.style.padding = "5%"
                     });
             }
@@ -88,7 +88,7 @@
                         image.style.display = "flex";
                         texto.innerHTML = data.id
                         datos.innerHTML = data.tags + "</br>" + data.blurb 
-                        datos.style.backgroundColor = "azure"
+                        datos.style.backgroundColor = "#010A13"
                         datos.style.padding = "5%"
                     });
             }
@@ -103,7 +103,7 @@
                         image.style.display = "flex";
                         texto.innerHTML = data.id
                         datos.innerHTML = data.tags + "</br>" + data.blurb 
-                        datos.style.backgroundColor = "azure"
+                        datos.style.backgroundColor = "#010A13"
                         datos.style.padding = "5%"
                     });
             }
@@ -118,12 +118,12 @@
                         image.style.display = "flex";
                         texto.innerHTML = data.id
                         datos.innerHTML = data.tags + "</br>" + data.blurb 
-                        datos.style.backgroundColor = "azure"
+                        datos.style.backgroundColor = "#010A13"
                         datos.style.padding = "5%"
                     });
             }
             function cargarNuevaImagentiradores() {
-                fetch("/randlol/tirador")
+                fetch("/randlol/tiradores")
                     .then(response => response.json())
                     .then(data => {
                         const image = document.getElementById("champimg");
@@ -133,10 +133,28 @@
                         image.style.display = "flex";
                         texto.innerHTML = data.id
                         datos.innerHTML = data.tags + "</br>" + data.blurb 
-                        datos.style.backgroundColor = "azure"
+                        datos.style.backgroundColor = "#010A13"
                         datos.style.padding = "5%"
                     });
             }
+
+            function cargarNuevaImagensoportes() {
+                fetch("/randlol/soportes")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "#010A13"
+                        datos.style.padding = "5%"
+                    });
+            }
+
+
             document.addEventListener("DOMContentLoaded", function () {
                 const ball = document.getElementById("all");
                 ball.addEventListener("click", cargarNuevaImagentodos);

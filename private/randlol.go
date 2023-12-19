@@ -156,6 +156,29 @@ func randtiradorchampsHandler(c *fiber.Ctx) error {
 	return c.JSON(tirador[randtirador])
 }
 
+func randsoportechampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var soporte []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Support" {
+				soporte = append(soporte, champs[i])
+			}
+		}
+	}
+	randtirador := rand.Intn(len(soporte))
+	return c.JSON(soporte[randtirador])
+}
+
 // Handler que devuelve una lista de items obtenida desde la API de League of Legends.
 func listaitemsHandler(c *fiber.Ctx) error {
 	client := golio.NewClient(llave,
@@ -189,7 +212,8 @@ func main() {
 	web.Get("/randlol/asesinos", randasesinochampsHandler)
 	web.Get("/randlol/peleadores", randpeleadorchampsHandler)
 	web.Get("/randlol/magos", randmagochampsHandler)
-	web.Get("/randlol/tirador", randtiradorchampsHandler)
+	web.Get("/randlol/tiradores", randtiradorchampsHandler)
+	web.Get("/randlol/soportes", randsoportechampsHandler)
 
 	// Sección para el manejo de recursos de API2
 	web.Post("/randitems", API2Handler)
