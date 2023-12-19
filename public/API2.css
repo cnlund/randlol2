@@ -147,6 +147,7 @@ button span:nth-child(4){
 
 
 .Randomizar{
+    border-radius: 10px;
     padding: 2vh;
     font-size: 3vh;
     font-weight: bolder;

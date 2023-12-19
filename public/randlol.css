@@ -1,81 +1,89 @@
 .home{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10vh;
+    
 }
 body {
     margin: 0;
     background-color: #0A1428;
     flex-direction: row;
+    justify-content: center;
 }
 
 .botonAtras {
-    padding: 3vh;
+    padding: 6vh;
+    display: flex;
+    justify-content: center;
 }
 
 .regreso {
-    position: relative;
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    background: #0A1428;
-    color: #C8AA6E;
-    cursor: pointer;
+   position: relative;
+   padding: 10px 15px;
+   border: none;
+   outline: none;
+   background: #0A1428;
+   color: #C8AA6E;
+   cursor: pointer;
+   transition: .5s;
+   overflow: hidden;
+}
+
+.regreso:hover{
+    color: #C89B3C;
+}
+
+.regreso  span {
+    position: absolute;
+    background: #C89B3C;
     transition: .5s;
-    overflow: hidden;
- }
- 
- .regreso:hover{
-     color: #C89B3C;
- }
- 
- .regreso  span {
-     position: absolute;
-     background: #C89B3C;
-     transition: .5s;
- }
- 
- button span:nth-child(1){
-     width: 100%;
-     height: 1px;
-     top: 0;
-     left: -100%;
- }
- 
- .regreso:hover span:nth-child(1){
-     left: 0;
- }
- 
- button span:nth-child(2){
-     width: 100%;
-     height: 1px;
-     bottom: 0;
-     right: -100%;
- }
- 
- .regreso:hover span:nth-child(2){
-     right: 0;
- }
- 
- button span:nth-child(3){
-     width: 1px;
-     height: 100%;
-     top: -100%;
-     right: 0;
- }
- 
- .regreso:hover span:nth-child(3){
-     top: 0;
- }
- 
- button span:nth-child(4){
-     width: 1px;
-     height: 100%;
-     bottom: -100%;
-     left: 0;
- }
- 
- .regreso:hover span:nth-child(4){
-     bottom: 0;
- }
+}
+
+button span:nth-child(1){
+    width: 100%;
+    height: 1px;
+    top: 0;
+    left: -100%;
+}
+
+.regreso:hover span:nth-child(1){
+    left: 0;
+}
+
+button span:nth-child(2){
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    right: -100%;
+}
+
+.regreso:hover span:nth-child(2){
+    right: 0;
+}
+
+button span:nth-child(3){
+    width: 1px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+}
+
+.regreso:hover span:nth-child(3){
+    top: 0;
+}
+
+button span:nth-child(4){
+    width: 1px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+}
+
+.regreso:hover span:nth-child(4){
+    bottom: 0;
+}
+
 .todas {
     display: flex;
     align-items: center;
@@ -90,11 +98,11 @@ body {
 }
 
 .lateral {
-    border: solid #C89B3C;
     padding: 2vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: start;
     
 }
 
@@ -116,6 +124,7 @@ body {
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
+
 }
 
 .Peleador:hover {
@@ -127,6 +136,7 @@ body {
     border-radius: 8px;
     padding: 2vh;
     border: solid #C89B3C;
+  
 }
 
 .Mago:hover {
@@ -165,7 +175,15 @@ body {
 .Tanque:hover {
     box-shadow: 0 0 20px #0AC8B9;
 }
+
+
+.contenedor3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .contenedorChamps{
+    margin-right: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,11 +193,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
-    width: 700px;
-    margin: 50px;
+    min-height: 300px;
+    min-width: 500px;
+    margin: 10vh;
     border: 10px solid #785A28;
     background-color: #5B5A56;
+}
+.texto{
+    margin-right: 5vh;
 }
 
 .TextoRec {
@@ -192,4 +213,5 @@ body {
 
 .champimg{
     display: none;
+    border: solid #0AC8B9;
 }

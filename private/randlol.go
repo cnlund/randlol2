@@ -10,8 +10,8 @@ import (
 var llave = "RGAPI-d4a3e543-bd9c-4911-836c-36e648f1834e"
 
 type Champ struct {
-	Nombre string   `json:".name"`
-	Tipos  []string `json:".tags"`
+	Nombre string
+	Tipos  []string
 }
 
 func inicioHandler(c *fiber.Ctx) error {
@@ -24,6 +24,10 @@ func randlolHandler(c *fiber.Ctx) error {
 
 func API2Handler(c *fiber.Ctx) error {
 	return c.SendFile("public/API2.html")
+}
+
+func API3Handler(c *fiber.Ctx) error {
+	return c.SendFile("public/API3.html")
 }
 
 func listachampsHandler(c *fiber.Ctx) error {
@@ -60,11 +64,16 @@ func main() {
 	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
 	web.Get("/listachamps", listachampsHandler)
 	web.Static("/randlol/js", "/public/randlol.js")
+
 	//Aqui la seccion perteneciente al manejo de recusos de API2
 	web.Post("/randitems", API2Handler)
 	web.Static("/randitems/css", "/public/API2.css")
 	web.Get("/randitems/listaitems", listaitemsHandler)
 	web.Static("/randitems/js", "public/API2.js")
+
+	//Aqui la seccion perteneciente al manejo de recusos de API3
+	web.Post("/randline", API3Handler)
+	web.Static("/randline/css", "/public/API3.css")
 
 	web.Listen(":403")
 }
