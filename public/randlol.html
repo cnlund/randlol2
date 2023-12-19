@@ -42,10 +42,10 @@
                     <img id="champimg" width="100%">
                 </div>
                 <div class="texto">
-                    <h1 class=TextoRec id="textchamp">
+                    <h1 class="TextoRec" id="textchamp">
                         RandLOL
                     </h1>
-                    <h2>
+                    <h2 class="TextoRec" id="datoschamps">
                     </h2>
                 </div>
             </div>
@@ -62,18 +62,93 @@
             </div>
         </div>
         <script>
-            fetch("/randlol/all")
-                .then(response => response.json())
-                .then(data => {
-                    ball = document.getElementById("all")
-                    image = document.getElementById("champimg")
-                    const ponerimagenall = function () {
-                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`
-                        image.style.display = "flex"
-                    }
-                    ball.addEventListener("click", ponerimagenall)
-                })
-        </script>
+            function cargarNuevaImagentodos() {
+                fetch("/randlol/all")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "azure"
+                        datos.style.padding = "5%"
+                    });
+            }
+            function cargarNuevaImagenasesinos() {
+                fetch("/randlol/asesinos")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "azure"
+                        datos.style.padding = "5%"
+                    });
+            }
+            function cargarNuevaImagenpeleadores() {
+                fetch("/randlol/peleadores")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "azure"
+                        datos.style.padding = "5%"
+                    });
+            }
+            function cargarNuevaImagenmagos() {
+                fetch("/randlol/magos")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "azure"
+                        datos.style.padding = "5%"
+                    });
+            }
+            function cargarNuevaImagentiradores() {
+                fetch("/randlol/tirador")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "azure"
+                        datos.style.padding = "5%"
+                    });
+            }
+            document.addEventListener("DOMContentLoaded", function () {
+                const ball = document.getElementById("all");
+                ball.addEventListener("click", cargarNuevaImagentodos);
+                const basesino = document.getElementById("asesino");
+                basesino.addEventListener("click", cargarNuevaImagenasesinos)
+                const bpeleador = document.getElementById("peleador")
+                bpeleador.addEventListener("click", cargarNuevaImagenpeleadores)
+                const bmago = document.getElementById("mago")
+                bmago.addEventListener("click", cargarNuevaImagenmagos)
+                const btirador = document.getElementById("tirador")
+                btirador.addEventListener("click", cargarNuevaImagentiradores)
+            });
+        </script> 
 </body>
-
 </html>

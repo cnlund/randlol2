@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"math/rand"
-	"time"
 
 	"github.com/KnutZuidema/golio"
 	"github.com/KnutZuidema/golio/api"
@@ -11,17 +10,22 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Variable global que almacena la clave de la API de League of Legends.
 var llave = "RGAPI-d4a3e543-bd9c-4911-836c-36e648f1834e"
 
+// Definición de la estructura Champ para representar información de campeones.
 type Champ struct {
 	Nombre string   `json:"id"`
 	Tipos  []string `json:"tags"`
+	Lore   string   `json:"blurb"`
 }
 
+// Handler para la ruta raíz que devuelve un archivo HTML.
 func inicioHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/inicio.html")
 }
 
+// Handlers para diferentes rutas que devuelven archivos HTML.
 func randlolHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/randlol.html")
 }
@@ -34,6 +38,7 @@ func API3Handler(c *fiber.Ctx) error {
 	return c.SendFile("public/API3.html")
 }
 
+// Handler que devuelve una lista de campeones obtenida desde la API de League of Legends.
 func listachampsHandler(c *fiber.Ctx) error {
 	client := golio.NewClient(llave,
 		golio.WithRegion(api.RegionLatinAmericaNorth),
@@ -42,6 +47,7 @@ func listachampsHandler(c *fiber.Ctx) error {
 	return c.JSON(listachamps)
 }
 
+// Handler que devuelve un campeón aleatorio de la lista de campeones.
 func randallchampsHandler(c *fiber.Ctx) error {
 	client := golio.NewClient(llave,
 		golio.WithRegion(api.RegionLatinAmericaNorth),
@@ -57,6 +63,100 @@ func randallchampsHandler(c *fiber.Ctx) error {
 	return c.JSON(champs[randchamp])
 }
 
+// Handler que devuelve un asesino aleatorio de la lista de campeones.
+func randasesinochampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var asesinos []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Assassin" {
+				asesinos = append(asesinos, champs[i])
+			}
+		}
+	}
+	randasesino := rand.Intn(len(asesinos))
+	return c.JSON(asesinos[randasesino])
+}
+
+func randpeleadorchampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var peleadores []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Fighter" {
+				peleadores = append(peleadores, champs[i])
+			}
+		}
+	}
+	randpeleador := rand.Intn(len(peleadores))
+	return c.JSON(peleadores[randpeleador])
+}
+
+func randmagochampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var mago []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Mage" {
+				mago = append(mago, champs[i])
+			}
+		}
+	}
+	randmago := rand.Intn(len(mago))
+	return c.JSON(mago[randmago])
+}
+
+func randtiradorchampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var tirador []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Marksman" {
+				tirador = append(tirador, champs[i])
+			}
+		}
+	}
+	randtirador := rand.Intn(len(tirador))
+	return c.JSON(tirador[randtirador])
+}
+
+// Handler que devuelve una lista de items obtenida desde la API de League of Legends.
 func listaitemsHandler(c *fiber.Ctx) error {
 	client := golio.NewClient(llave,
 		golio.WithRegion(api.RegionLatinAmericaNorth),
@@ -65,13 +165,15 @@ func listaitemsHandler(c *fiber.Ctx) error {
 	return c.JSON(listaitems)
 }
 
+// Función principal donde se configuran las rutas y se inicia el servidor web.
 func main() {
+	//
 	web := fiber.New()
 	web.Get("/", inicioHandler)
 	web.Static("/css", "/public/inicio.css")
 	web.Static("/logo", "public/imagenes-inicio/logo-lolpedia.png")
 
-	//Aqui la seccion perteneciente al manejo de recusos de RANDLOL
+	// Sección para el manejo de recursos de RANDLOL
 	web.Post("/randlol", randlolHandler)
 	web.Static("/randlol/css", "/public/randlol.css")
 	web.Static("/randlol/todas", "/public/imagenes-randlol/emblem-challenger.png")
@@ -81,18 +183,21 @@ func main() {
 	web.Static("/randlol/tirador", "/public/imagenes-randlol/marksman.png")
 	web.Static("/randlol/soporte", "/public/imagenes-randlol/support.png")
 	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
+
 	web.Get("/listachamps", listachampsHandler)
-	ticker := time.NewTicker(1 * time.Second)
-	for range ticker.C {
-		web.Get("/randlol/all", randallchampsHandler)
-	}
-	//Aqui la seccion perteneciente al manejo de recusos de API2
+	web.Get("/randlol/all", randallchampsHandler)
+	web.Get("/randlol/asesinos", randasesinochampsHandler)
+	web.Get("/randlol/peleadores", randpeleadorchampsHandler)
+	web.Get("/randlol/magos", randmagochampsHandler)
+	web.Get("/randlol/tirador", randtiradorchampsHandler)
+
+	// Sección para el manejo de recursos de API2
 	web.Post("/randitems", API2Handler)
 	web.Static("/randitems/css", "/public/API2.css")
 	web.Get("/randitems/listaitems", listaitemsHandler)
 	web.Static("/randitems/js", "public/API2.js")
 
-	//Aqui la seccion perteneciente al manejo de recusos de API3
+	// Sección para el manejo de recursos de API3
 	web.Post("/randline", API3Handler)
 	web.Static("/randline/css", "/public/API3.css")
 
