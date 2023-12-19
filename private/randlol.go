@@ -1,6 +1,10 @@
 package main
 
 import (
+	"encoding/json"
+	"math/rand"
+	"time"
+
 	"github.com/KnutZuidema/golio"
 	"github.com/KnutZuidema/golio/api"
 	"github.com/gofiber/fiber/v2"
@@ -10,8 +14,8 @@ import (
 var llave = "RGAPI-d4a3e543-bd9c-4911-836c-36e648f1834e"
 
 type Champ struct {
-	Nombre string
-	Tipos  []string
+	Nombre string   `json:"id"`
+	Tipos  []string `json:"tags"`
 }
 
 func inicioHandler(c *fiber.Ctx) error {
@@ -36,6 +40,21 @@ func listachampsHandler(c *fiber.Ctx) error {
 		golio.WithLogger(logrus.New().WithField("foo", "bar")))
 	listachamps, _ := client.DataDragon.GetChampions()
 	return c.JSON(listachamps)
+}
+
+func randallchampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	randchamp := rand.Intn(len(champs))
+	return c.JSON(champs[randchamp])
 }
 
 func listaitemsHandler(c *fiber.Ctx) error {
@@ -63,8 +82,10 @@ func main() {
 	web.Static("/randlol/soporte", "/public/imagenes-randlol/support.png")
 	web.Static("/randlol/tanque", "/public/imagenes-randlol/tank.png")
 	web.Get("/listachamps", listachampsHandler)
-	web.Static("/randlol/js", "/public/randlol.js")
-
+	ticker := time.NewTicker(1 * time.Second)
+	for range ticker.C {
+		web.Get("/randlol/all", randallchampsHandler)
+	}
 	//Aqui la seccion perteneciente al manejo de recusos de API2
 	web.Post("/randitems", API2Handler)
 	web.Static("/randitems/css", "/public/API2.css")

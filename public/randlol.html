@@ -12,49 +12,34 @@
 <body>
     <div class="home">
         <div class="lateral">
-            <form action=""></form>    
-                <button class="Asesino" id="asesino" >
-                    <img src="/randlol/asesino" height="50px">
-                </button>
-            </form> 
-            <form action=""></form>   
-                <button class="Peleador" id="peleador">
-                    <img src="/randlol/peleador" height="50px">
-                </button>
-            </form> 
-            <form action=""></form>   
-                <button class="Mago" id="mago">
-                    <img src="/randlol/mago" height="50px">
-                </button>
-            </form> 
-            <form action=""></form>   
-                <button class="Tirador" id="tirador">
-                    <img src="/randlol/tirador" height="50px">
-                </button>
-            </form> 
-            <form action=""></form>   
-                <button class="Soporte" id="soporte">
-                    <img src="/randlol/soporte" height="50px">
-                </button>
-            </form> 
-            <form action=""></form>   
-                <button class="Tanque" id="tanque">
-                    <img src="/randlol/tanque" height="50px">
-                </button>
-            </form> 
+            <button class="Asesino" id="asesino">
+                <img src="/randlol/asesino" height="50px">
+            </button>
+            <button class="Peleador" id="peleador">
+                <img src="/randlol/peleador" height="50px">
+            </button>
+            <button class="Mago" id="mago">
+                <img src="/randlol/mago" height="50px">
+            </button>
+            <button class="Tirador" id="tirador">
+                <img src="/randlol/tirador" height="50px">
+            </button>
+            <button class="Soporte" id="soporte">
+                <img src="/randlol/soporte" height="50px">
+            </button>
+            <button class="Tanque" id="tanque">
+                <img src="/randlol/tanque" height="50px">
+            </button>
         </div>
         <div class="todas">
-        <form id="ltodos" action="enviarlistachamps()" method="post">
             <button type="submit" class="ALL" id="all">
                 <img src="/randlol/todas" height="100px">
             </button>
-        </form>
         </div>
         <div class="conteneder3">
             <div class="contenedorChamps">
                 <div class="Campeones" id="Scampeones">
-                    <img id="champimg" width="50px">
-                   
+                    <img id="champimg" width="100%">
                 </div>
                 <div class="texto">
                     <h1 class=TextoRec id="textchamp">
@@ -76,8 +61,19 @@
                 </form>
             </div>
         </div>
-
-        <script src="/randlol/js"></script>
+        <script>
+            fetch("/randlol/all")
+                .then(response => response.json())
+                .then(data => {
+                    ball = document.getElementById("all")
+                    image = document.getElementById("champimg")
+                    const ponerimagenall = function () {
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`
+                        image.style.display = "flex"
+                    }
+                    ball.addEventListener("click", ponerimagenall)
+                })
+        </script>
 </body>
 
 </html>
