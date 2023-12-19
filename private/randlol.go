@@ -7,7 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var llave = "RGAPI-19263f20-b1dd-495f-85fe-a9f133932a18"
+var llave = "RGAPI-d4a3e543-bd9c-4911-836c-36e648f1834e"
 
 type Champ struct {
 	Nombre string   `json:".name"`
@@ -64,6 +64,7 @@ func main() {
 	web.Post("/randitems", API2Handler)
 	web.Static("/randitems/css", "/public/API2.css")
 	web.Get("/randitems/listaitems", listaitemsHandler)
+	web.Static("/randitems/js", "public/API2.js")
 
 	web.Listen(":403")
 }
