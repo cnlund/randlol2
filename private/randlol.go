@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"math/rand"
+	"os"
 
 	"github.com/KnutZuidema/golio"
 	"github.com/KnutZuidema/golio/api"
@@ -11,7 +12,8 @@ import (
 )
 
 // Variable global que almacena la clave de la API de League of Legends.
-var llave = "RGAPI-64b016e6-81e5-44cc-a46c-837b2b51dc45"
+var key, _ = os.ReadFile("key.txt")
+var llave = string(key)
 
 // Definición de la estructura Champ para representar información de campeones.
 type Champ struct {
