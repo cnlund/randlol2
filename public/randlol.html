@@ -137,7 +137,6 @@
                         datos.style.padding = "5%"
                     });
             }
-
             function cargarNuevaImagensoportes() {
                 fetch("/randlol/soportes")
                     .then(response => response.json())
@@ -153,8 +152,21 @@
                         datos.style.padding = "5%"
                     });
             }
-
-
+            function cargarNuevaImagentanques() {
+                fetch("/randlol/tanques")
+                    .then(response => response.json())
+                    .then(data => {
+                        const image = document.getElementById("champimg");
+                        const texto = document.getElementById("textchamp");
+                        const datos = document.getElementById("datoschamps")
+                        image.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`;
+                        image.style.display = "flex";
+                        texto.innerHTML = data.id
+                        datos.innerHTML = data.tags + "</br>" + data.blurb 
+                        datos.style.backgroundColor = "#010A13"
+                        datos.style.padding = "5%"
+                    });
+            }
             document.addEventListener("DOMContentLoaded", function () {
                 const ball = document.getElementById("all");
                 ball.addEventListener("click", cargarNuevaImagentodos);
@@ -166,6 +178,10 @@
                 bmago.addEventListener("click", cargarNuevaImagenmagos)
                 const btirador = document.getElementById("tirador")
                 btirador.addEventListener("click", cargarNuevaImagentiradores)
+                const bsoporte = document.getElementById("soporte")
+                bsoporte.addEventListener("click", cargarNuevaImagensoportes)
+                const btanque = document.getElementById("tanque")
+                btanque.addEventListener("click", cargarNuevaImagentanques)
             });
         </script> 
 </body>

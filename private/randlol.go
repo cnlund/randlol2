@@ -11,7 +11,7 @@ import (
 )
 
 // Variable global que almacena la clave de la API de League of Legends.
-var llave = "RGAPI-d4a3e543-bd9c-4911-836c-36e648f1834e"
+var llave = "RGAPI-64b016e6-81e5-44cc-a46c-837b2b51dc45"
 
 // Definición de la estructura Champ para representar información de campeones.
 type Champ struct {
@@ -175,8 +175,31 @@ func randsoportechampsHandler(c *fiber.Ctx) error {
 			}
 		}
 	}
-	randtirador := rand.Intn(len(soporte))
-	return c.JSON(soporte[randtirador])
+	randsoporte := rand.Intn(len(soporte))
+	return c.JSON(soporte[randsoporte])
+}
+
+func randtanquechampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	var tanque []Champ
+	for i := range champs {
+		for j := range champs[i].Tipos {
+			if champs[i].Tipos[j] == "Tank" {
+				tanque = append(tanque, champs[i])
+			}
+		}
+	}
+	randtanque := rand.Intn(len(tanque))
+	return c.JSON(tanque[randtanque])
 }
 
 // Handler que devuelve una lista de items obtenida desde la API de League of Legends.
@@ -214,6 +237,7 @@ func main() {
 	web.Get("/randlol/magos", randmagochampsHandler)
 	web.Get("/randlol/tiradores", randtiradorchampsHandler)
 	web.Get("/randlol/soportes", randsoportechampsHandler)
+	web.Get("/randlol/tanques", randtanquechampsHandler)
 
 	// Sección para el manejo de recursos de API2
 	web.Post("/randitems", API2Handler)
