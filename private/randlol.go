@@ -22,6 +22,11 @@ type Champ struct {
 	Lore   string   `json:"blurb"`
 }
 
+type Champstat struct {
+	Nombre string `json:"id"`
+	Titulo string `json:"title"`
+}
+
 // Handler para la ruta raíz que devuelve un archivo HTML.
 func inicioHandler(c *fiber.Ctx) error {
 	return c.SendFile("public/inicio.html")
@@ -213,9 +218,37 @@ func listaitemsHandler(c *fiber.Ctx) error {
 	return c.JSON(listaitems)
 }
 
+func champstatsHandler(c *fiber.Ctx) error {
+	return c.SendFile("public/champsstats.html")
+}
+
+func randstatschampsHandler(c *fiber.Ctx) error {
+	client := golio.NewClient(llave,
+		golio.WithRegion(api.RegionLatinAmericaNorth),
+		golio.WithLogger(logrus.New().WithField("foo", "bar")))
+	listaallchamps, _ := client.DataDragon.GetChampions()
+	jsonlallchamps, _ := json.Marshal(listaallchamps)
+	var champs []Champ
+	err := json.Unmarshal(jsonlallchamps, &champs)
+	if err != nil {
+		return err
+	}
+	randchamp := rand.Intn(len(champs))
+	var idchamp string
+	jsonchamps, _ := json.Marshal(champs[randchamp])
+	json.Unmarshal(jsonchamps, &idchamp)
+	randstatschamp, _ := client.DataDragon.GetChampion(idchamp)
+	jsonrandstatchamp, _ := json.Marshal(randstatschamp)
+	var statchamp Champstat
+	err2 := json.Unmarshal(jsonrandstatchamp, &statchamp)
+	if err2 != nil {
+		return err2
+	}
+	return c.JSON(randstatschamp)
+}
+
 // Función principal donde se configuran las rutas y se inicia el servidor web.
 func main() {
-	//
 	web := fiber.New()
 	web.Get("/", inicioHandler)
 	web.Static("/css", "/public/inicio.css")
@@ -245,11 +278,15 @@ func main() {
 	web.Post("/randitems", API2Handler)
 	web.Static("/randitems/css", "/public/API2.css")
 	web.Get("/randitems/listaitems", listaitemsHandler)
-	web.Static("/randitems/js", "public/API2.js")
 
 	// Sección para el manejo de recursos de API3
 	web.Post("/randline", API3Handler)
 	web.Static("/randline/css", "/public/API3.css")
+
+	//Sección para el manejo de recursos de Champstats
+	web.Post("/champstats", champstatsHandler)
+	web.Static("/champstats/css", "public/champsstats.css")
+	web.Get("/champstats/stat", randstatschampsHandler)
 
 	web.Listen(":403")
 }
