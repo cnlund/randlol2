@@ -11,33 +11,34 @@
     </div>
     <div class="contenedor">
         <div class="busqueda">
-            <button class="boton">Busqueda aleatoria</button>
+            <button class="boton" id="randbusq">Busqueda aleatoria</button>
             <div class="buscador">
-                <input type="text" class="buscadort"></input>
-                <button class="boton">Buscar</button>
             </div>
         </div>
         <div class="champ">
-            <div class="imgchamp">
-                <h1 class="text1">IMG CHAMP</h1>
+            <div class="imgchamp" id="cimg">
+                <img id="imgchamp">
             </div>
             <div class="infochamp">
                 <div class="encabezadochamp">
-                    <h1 class="text2">Nombre y titulo del campeon</h1>
+                    <h1 class="text2" id="Nombre"></h1>
+                    <h1 class="text2" id="Titulo"></h1>
                 </div>
                 <div class="lorechamp">
-                    <h1 class="text3">aqui ira el lore del champ</h1>
+                    <h1 class="text3" id="lorechamp"></h1>
                 </div>
-                <div class="statschamp">
+                <div class="statschamp" id="stats">
                     <div class="statsbase">
-                        <h1 class="text4">aqui ira las stats de inicio de partida</h1>
+                        <h1 class="text4" id="Vida"></h1>
+                        <h1 class="text4" id="Velocidadmov"></h1>
+                        <h1 class="text4" id="Daño"></h1>
                     </div>
                     <div class="habilidades">
-                        <h1 class="text5">aqui ira info de sus habilidades</h1>
+                        <h1 class="text5"></h1>
                     </div>
-                    <div class="consejos">
-                        <h1 class="text6">aqui iran consejos para jugar contra el</h1>
-                    </div>
+                </div>
+                <div class="consejos" id="ctips">
+                    <h1 class="text6" id="consejos"></h1>
                 </div>
             </div>
         </div>
@@ -53,6 +54,39 @@
             </button>
         </form>
     </div>
+    <script>
+        function cargardatarandom() {
+            fetch("/champstats/stat")
+                .then(response => response.json())
+                .then(data => {
+                    const imgchamp = document.getElementById("imgchamp")
+                    imgchamp.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data.id}_0.jpg`
+                    const nombrechamp = document.getElementById("Nombre")
+                    nombrechamp.innerHTML = data.id
+                    const titulochamp = document.getElementById("Titulo")
+                    titulochamp.innerHTML = data.title
+                    const lore = document.getElementById("lorechamp")
+                    lore.innerHTML = data.lore
+                    const cstats = document.getElementById("stats")
+                    cstats.style.width = "fit-content"
+                    const statvida = document.getElementById("Vida")
+                    statvida.innerHTML = "Vida: " + data.stats.hp
+                    const statmov = document.getElementById("Velocidadmov")
+                    statmov.innerHTML = "Armadura: " + data.stats.armor
+                    statmov.style.textAlign = "left"
+                    const daño = document.getElementById("Daño")
+                    daño.innerHTML = "Daño: " + data.stats.attackdamage
+                    const ctips = document.getElementById("ctips")
+                    ctips.style.width = "fit-content"
+                    const tips = document.getElementById("consejos")
+                    tips.innerHTML = data.enemytips
+                });
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const brandbusq = document.getElementById("randbusq");
+            brandbusq.addEventListener("click", cargardatarandom);
+        });
+    </script>
 </body>
 
 </html>

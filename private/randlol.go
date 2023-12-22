@@ -22,9 +22,20 @@ type Champ struct {
 	Lore   string   `json:"blurb"`
 }
 
+type stats struct {
+	Vida            int64 `json:"hp"`
+	Velocidadmov    int64 `json:"movespeed"`
+	Armadura        int64 `json:"armor"`
+	Daño            int64 `json:"attackdamage"`
+	Velocidadataque int64 `json:"attackspeed"`
+}
+
 type Champstat struct {
-	Nombre string `json:"id"`
-	Titulo string `json:"title"`
+	Nombre       string   `json:"id"`
+	Titulo       string   `json:"title"`
+	Lore         string   `json:"lore"`
+	Consejos     []string `json:"enemytips"`
+	Estadisticas stats    `json:"stats"`
 }
 
 // Handler para la ruta raíz que devuelve un archivo HTML.
@@ -234,17 +245,11 @@ func randstatschampsHandler(c *fiber.Ctx) error {
 		return err
 	}
 	randchamp := rand.Intn(len(champs))
-	var idchamp string
-	jsonchamps, _ := json.Marshal(champs[randchamp])
-	json.Unmarshal(jsonchamps, &idchamp)
-	randstatschamp, _ := client.DataDragon.GetChampion(idchamp)
-	jsonrandstatchamp, _ := json.Marshal(randstatschamp)
+	randstatchamp, _ := client.DataDragon.GetChampion(champs[randchamp].Nombre)
+	jsonrandstatchamp, _ := json.Marshal(randstatchamp)
 	var statchamp Champstat
-	err2 := json.Unmarshal(jsonrandstatchamp, &statchamp)
-	if err2 != nil {
-		return err2
-	}
-	return c.JSON(randstatschamp)
+	_ = json.Unmarshal(jsonrandstatchamp, &statchamp)
+	return c.JSON(statchamp)
 }
 
 // Función principal donde se configuran las rutas y se inicia el servidor web.
